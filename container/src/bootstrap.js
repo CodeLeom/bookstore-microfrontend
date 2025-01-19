@@ -6,7 +6,7 @@ import "./styles/index.css";
 
 const root = createRoot(document.getElementById("root"));
 root.render(
-    <React.StrictMode>
-        <RouterProvider router={App} />
-    </React.StrictMode>
+  <React.StrictMode>
+    <RouterProvider router={App} />
+  </React.StrictMode>
 );

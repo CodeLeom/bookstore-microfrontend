@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
-module.exports = (_, arg) = ({
+module.exports = (_, arg) => ({
   entry: "./src/index.js",
   // mode: "development",
   devServer: {

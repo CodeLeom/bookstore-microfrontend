@@ -16,9 +16,9 @@ const CheckoutPage = () => {
   }, []);
 
   const total = cartItems.reduce(
-    (acc, item) => acc + item.price * item.quantity,
+    (acc, item) => acc + (item.price * item.quantity),
     0
-  );
+  ).toFixed(2);
 
   const handlePlaceOrder = () => {
     // Clear cart

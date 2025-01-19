@@ -1,9 +1,9 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
-module.exports = {
+module.exports = (_, arg) => ({
   entry: "./src/index.js",
-  mode: "development",
+  // mode: "development",
   devServer: {
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -12,7 +12,7 @@ module.exports = {
     historyApiFallback: true,
   },
   output: {
-    publicPath: "auto",
+    publicPath: arg.mode === "development" ? "http://localhost:3000/" : "https://container-psi-seven.vercel.app/",
   },
   resolve: {
     extensions: [".js", ".jsx"],
@@ -39,9 +39,9 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "container",
       remotes: {
-        listing: "listing@http://localhost:3001/remoteEntry.js",
-        cart: "cart@http://localhost:3002/remoteEntry.js",
-        checkout: "checkout@http://localhost:3003/remoteEntry.js",
+        listing: "arg.mode === 'development' ? 'listing@http://localhost:3001/remoteEntry.js' : 'https://listing-rouge.vercel.app/remoteEntry.js'",
+        cart: "arg.mode === 'development' ? 'cart@http://localhost:3002/remoteEntry.js' : 'https://cart-psi-seven.vercel.app/remoteEntry.js'",
+        checkout: "arg.mode === 'development' ? 'checkout@http://localhost:3003/remoteEntry.js' : 'https://checkout-liart.vercel.app/remoteEntry.js'",
       },
       shared: ["react", "react-dom"],
     }),
@@ -49,4 +49,4 @@ module.exports = {
       template: "./public/index.html",
     }),
   ],
-};
+})

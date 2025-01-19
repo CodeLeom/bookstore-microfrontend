@@ -1,9 +1,9 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
-module.exports = {
+module.exports = (_, arg) => ({
   entry: "./src/index.js",
-  mode: "development",
+  // mode: "development",
   devServer: {
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -12,7 +12,7 @@ module.exports = {
     historyApiFallback: true,
   },
   output: {
-    publicPath: "auto",
+    publicPath: arg.mode === "development" ? "http://localhost:3003/" : "https://checkout-liart.vercel.app/",
   },
   resolve: {
     extensions: [".js", ".jsx"],
@@ -48,4 +48,4 @@ module.exports = {
       template: "./public/index.html",
     }),
   ],
-};
+})

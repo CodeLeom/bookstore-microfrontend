@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import {FaShoppingCart} from 'react-icons/fa';
 
 
@@ -31,6 +31,8 @@ const Navbar = () => {
   }, []);
 
   return (
+    <React.Suspense fallback={<div className="p-4">Loading...</div>}>
+    <div className="min-h-screen bg-gray-50">
     <nav className="flex items-center justify-between p-4 bg-white shadow-sm">
       <Link to="/" className="text-xl font-bold">
         <img src="/assets/logo.png" alt="bookstore logo" className="w-40 h-10" />
@@ -38,6 +40,9 @@ const Navbar = () => {
       <div className="flex items-center gap-6">
         <Link to="/listing" className="text-lg font-semibold">
           Books
+        </Link>
+        <Link to="/checkout" className="text-lg font-semibold">
+          Checkout
         </Link>
 
         <Link to="/cart" className="relative">
@@ -50,6 +55,8 @@ const Navbar = () => {
         </Link>
       </div>
     </nav>
+  </div>
+  </React.Suspense>
   );
 };
 

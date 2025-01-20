@@ -12,7 +12,7 @@ module.exports = (_, arg) => ({
     historyApiFallback: true,
   },
   output: {
-    publicPath: arg.mode === "development" ? "http://localhost:3000/" : "https://container-psi-seven.vercel.app/",
+    publicPath: arg.mode === "development" ? "http://localhost:3000/" : "https://container-smoky.vercel.app/",
   },
   resolve: {
     extensions: [".js", ".jsx"],

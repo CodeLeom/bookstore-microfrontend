@@ -39,9 +39,9 @@ module.exports = (_, arg) => ({
     new ModuleFederationPlugin({
       name: "container",
       remotes: {
-        listing: "arg.mode === 'development' ? 'listing@http://localhost:3001/remoteEntry.js' : 'https://listing-rouge.vercel.app/remoteEntry.js'",
-        cart: "arg.mode === 'development' ? 'cart@http://localhost:3002/remoteEntry.js' : 'https://cart-psi-seven.vercel.app/remoteEntry.js'",
-        checkout: "arg.mode === 'development' ? 'checkout@http://localhost:3003/remoteEntry.js' : 'https://checkout-liart.vercel.app/remoteEntry.js'",
+        listing: "https://listing-rouge.vercel.app/remoteEntry.js",
+        cart: "https://cart-psi-seven.vercel.app/remoteEntry.js",
+        checkout: "https://checkout-liart.vercel.app/remoteEntry.js",
       },
       shared: ["react", "react-dom"],
     }),
